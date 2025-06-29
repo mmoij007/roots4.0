@@ -1,0 +1,149 @@
+/* === ROOTS Estilo renovado === */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #000;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: #ff5e00;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #ff5e00;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.section {
+  background: #111;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(255, 94, 0, 0.4);
+  position: relative;
+}
+
+.section h2 {
+  color: #ff5e00;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section p, .section ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.section img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #ff5e00;
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e55300;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: white;
+}
+
+#userList p {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  color: #fff;
+}
+
+#userList p:hover {
+  background-color: #222;
+}
+
+#messages p {
+  margin: 5px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(255, 94, 0, 0.2);
+}
+
+#chatWindow {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+body {
+  animation: bodyFade 1s ease-in-out;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes bodyFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
