@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Chat ROOTS</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000;
+      background-image: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #262626, #0d0d0d);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .particles, .blur-circles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particles span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 94, 0, 0.4);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+      filter: blur(1px);
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(0.6); }
+      to   { transform: translateY(-10vh) scale(1); }
+    }
+
+    .blur-circles span {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(255, 94, 0, 0.08);
+      filter: blur(80px);
+      animation: pulse 10s ease-in-out infinite alternate;
+    }
+
+    .blur-circles span:nth-child(2) {
+      left: 60%;
+      top: 25%;
+      animation-delay: 3s;
+    }
+
+    .blur-circles span:nth-child(3) {
+      left: 10%;
+      top: 60%;
+      animation-delay: 6s;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.4; }
+      to   { transform: scale(1.3); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blur-circles">
+    <span style="left: 20%; top: 20%;"></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="particles" id="particles-container"></div>
+
+  <div class="section chat-box" style="z-index: 10;">
+    <button onclick="window.location.href='/logout'" style="float: right;">Cerrar sesión</button>
+    <h2>Panel de Chat ROOTS - Admin</h2>
+
+    <div id="userList" style="margin-bottom: 20px;">
+      <p>Cargando usuarios...</p>
+    </div>
+
+    <div id="chatWindow" style="display: none;">
+      <h3>Conversación con <span id="chatWith"></span></h3>
+      <div id="messages" style="max-height: 300px; overflow-y: auto; background-color: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 10px; margin-bottom: 15px;"></div>
+      
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="adminMessage" placeholder="Escribí tu respuesta..." style="flex: 1;">
+        <button onclick="sendAdminMessage()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('particles-container');
+    for (let i = 0; i < 60; i++) {
+      const p = document.createElement('span');
+      const size = Math.random() * 6 + 4;
+      const delay = Math.random() * 10;
+      const duration = 10 + Math.random() * 10;
+      const left = Math.random() * 100;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${left}vw`;
+      p.style.animationDelay = `${delay}s`;
+      p.style.animationDuration = `${duration}s`;
+      container.appendChild(p);
+    }
+  </script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
